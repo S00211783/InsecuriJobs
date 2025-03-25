@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsecuriJobs | Post Job</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navtitle-container">
+            <img src="Untitled.png" width="80"/>
+            <p class="navtitle">InsecuriJobs</p>
+        </div>
+        <div class="navlinks-container">
+            <a href="index.html" class="navlinks">Home</a>
+            <a href="#" class="active navlinks">Post Job</a>
+            <a href="login.html" class="navlinks">Login</a>
+            <a href="register.html" class="navlinks">Register</a>
+        </div>
+    </nav>
+    <div class="form-container1">
+        <h1>Post a Job</h1>
+        <form id="jobForm">
+            <p>Job Title</p>
+            <input type="text" id="title" placeholder="Job Title" required>
+            <p>Company Name</p>
+            <input type="text" id="company" placeholder="Company Name" required>
+            <p>Job Description</p>
+            <textarea id="description" placeholder="Job Description" required></textarea>
+            <p>Salary</p>
+            <input type="text" id="salary" placeholder="Salary">
+            <button type="submit">Post Job</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("jobForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let title = document.getElementById("title").value;
+            let company = document.getElementById("company").value;
+            let description = document.getElementById("description").value;
+            let salary = document.getElementById("salary").value;
+
+            fetch("http://localhost:3000/jobs", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title, company, description, salary }) // 🚨 No authentication check
+            }).then(res => res.json()).then(data => {
+                alert("Job Posted!");
+            });
+        });
+    </script>
+</body>
+</html>

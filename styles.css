@@ -1,0 +1,163 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+nav{
+    display: flex;
+}
+.navtitle-container{
+    display: flex;
+    flex-direction: row;
+}
+.navtitle{
+    margin-top: 30px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.navlinks-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: end;
+    width: 90%;
+}
+.navlinks{
+    font-size: 18px;
+    margin-right: 10%;
+    color: #000;
+    text-decoration: none;
+}
+.navlinks:hover{
+    color: #00000044;
+    text-decoration: underline;
+    transition: 0.5s;
+}
+.active{
+    text-decoration: underline;
+}
+.index-container1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.index-container1 p{
+    font-size: 18px;
+}
+.search-box-container{
+    margin: 20px;
+    width: 100%;
+    text-align: center;
+}
+.search-box{
+    border: none;
+    padding: 20px;
+    width: 60%;
+    border-radius: 30px;
+    font-size: large;
+}
+.search-box-btn{
+    border: none;
+    padding: 20px;
+    border-radius: 30px;
+    width: 10%;
+    background-color: #5BB8FF;
+    font-size: 16px;
+    font-weight: 550;
+}
+.search-box-btn:hover{
+    background-color: #5BB8FF44;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.form-container1{
+    margin: 10px;
+    display: flex;
+    width: 100%;
+    height: 60%;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+}
+.form-container1 form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.form-container1 form input{
+    margin: 10px;
+    padding: 10px;
+    background-color: #00000010;
+    border-color: transparent;
+
+}
+.form-container1 form textarea{
+    margin: 10px;
+    padding: 10px;
+    background-color: #00000010;
+    border-color: transparent;
+    max-width: 97.5%;
+    min-width: 97.5%;
+    min-height: 200px;
+}
+.form-container1 form p{
+    margin-left: 10px;
+    margin-top:10px;
+    margin-bottom: -10px;
+    font-weight: bold;
+}
+.form-container1 form button{
+    margin: 5px 10%;
+    font-weight: bold;
+    background-color: #46FF3F;
+    border-color: transparent;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 18px;
+}
+.form-container1 form button:hover{
+    background-color: #46FF3F80;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.job-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+.job-card h3 {
+    margin: 0;
+}
+.job-card p {
+    margin: 5px 0;
+}
+.loginForgotPassword{
+    color: #000;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.loginForgotPassword:after{
+    color: #000;
+    text-decoration: none;
+}
+.loginForgotPassword:hover{
+    color: #00000044;
+    text-decoration: none;
+}

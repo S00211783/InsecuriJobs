@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsecuriJobs | Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navtitle-container">
+            <img src="Untitled.png" width="80"/>
+            <p class="navtitle">InsecuriJobs</p>
+        </div>
+        <div class="navlinks-container">
+            <a href="#" class="active navlinks">Home</a>
+            <a href="post-job.html" class="navlinks">Post Job</a>
+            <a href="login.html" class="navlinks">Login</a>
+            <a href="register.html" class="navlinks">Register</a>
+        </div>
+    </nav>
+    <div class="index-container1">
+        <img src="Untitled.png">
+        <h1>InsecuriJobs</h1>
+        <p>Welcome to InsecuriJobs, This website has deliberate security vulnerabilities to help with practising Pentesting.<br>It contains <strong>SQL Injection, Cross-Site Scripting (XSS), Broken Authentication, and Access Control Flaws</strong>.</p>
+        <div class="search-box-container">
+            <input type="search" placeholder="Search for a job" class="search-box" id="searchInput">
+            <button class="search-box-btn" onclick="searchJob()">Search</button>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+
+
+
+
+
+    <script>
+        // Function to search for jobs based on search term
+        function searchJob() {
+            const searchTerm = document.getElementById('searchInput').value;
+    
+            // Call the API to search for jobs based on the search term
+            fetch(`http://localhost:3000/jobs/search?q=${searchTerm}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear the previous search results
+                    document.getElementById('searchResults').innerHTML = '';
+    
+                    // If no results are found, show "Nothing found" message
+                    if (data.length === 0) {
+                        document.getElementById('searchResults').innerHTML = '<br>Nothing found for: ' + searchTerm;
+                    } else {
+                        // If results are found, display them as cards
+                        let resultsHTML = '';
+                        data.forEach(job => {
+                            resultsHTML += `
+                                <div class="job-card">
+                                    <h3>${job.title}</h3>
+                                    <p><strong>Company:</strong> ${job.companyName}</p>
+                                    <p><strong>Salary:</strong> $${job.salary}</p>
+                                    <p><strong>Description:</strong> ${job.description}</p>
+                                </div>
+                            `;
+                        });
+                        document.getElementById('searchResults').innerHTML = resultsHTML;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching jobs:', error);
+                    document.getElementById('searchResults').innerHTML = '<br>Error fetching search results for ' + searchTerm +'. Please try again.';
+                });
+        }
+    
+        // On page load, fetch and display all jobs
+        window.onload = function() {
+            // Call the API to get all jobs from the database
+            fetch('http://localhost:3000/jobs')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);  // Log the data to check its format
+        
+                    // Ensure the data is an array
+                    if (Array.isArray(data)) {
+                        // Display all jobs as cards
+                        let resultsHTML = '';
+                        data.forEach(job => {
+                            resultsHTML += `
+                                <div class="job-card">
+                                    <h3>${job.title}</h3>
+                                    <p><strong>Company:</strong> ${job.companyName}</p>
+                                    <p><strong>Salary:</strong> $${job.salary}</p>
+                                    <p><strong>Description:</strong> ${job.description}</p>
+                                </div>
+                            `;
+                        });
+                        document.getElementById('searchResults').innerHTML = resultsHTML;
+                    } else {
+                        console.error("Expected an array but got:", data);
+                        document.getElementById('searchResults').innerHTML = 'Error: Data format is incorrect.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching jobs:', error);
+                    document.getElementById('searchResults').innerHTML = '<br>Error loading jobs. Please try again.';
+                });
+        };
+    </script>
+</body>
+</html>
