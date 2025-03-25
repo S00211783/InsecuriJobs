@@ -161,3 +161,14 @@ nav{
     color: #00000044;
     text-decoration: none;
 }
+.profile-container{
+    margin: 10px;
+}
+.profile-container h1{
+    margin: 10px;
+
+}
+.profile-container p{
+    margin: 10px;
+    
+}

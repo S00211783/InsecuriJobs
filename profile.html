@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>InsecuriJobs | Forgot Password</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Profile</h1>
-    <p>Username: <span id="username"></span></p>
-    <p>Email: <span id="email"></span></p>
+    <nav>
+        <div class="navtitle-container">
+            <img src="Untitled.png" width="80"/>
+            <p class="navtitle">InsecuriJobs</p>
+        </div>
+        <div class="navlinks-container">
+            <a href="index.html" class="navlinks">Home</a>
+            <a href="post-job.html" class="navlinks">Post Job</a>
+            <a href="./login.html" class="navlinks">Login</a>
+            <a href="register.html" class="navlinks">Register</a>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <h1>Profile</h1>
+        <p><strong>Username: </strong> <span id="username"></span></p>
+        <p><strong>Email: </strong><span id="email"></span></p>
+    </div>
 
     <script>
         let user = JSON.parse(localStorage.getItem("user")); // 🚨 Easily manipulated
