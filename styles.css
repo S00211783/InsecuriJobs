@@ -162,7 +162,7 @@ nav{
     text-decoration: none;
 }
 .profile-container{
-    margin: 10px;
+    margin: 4%;
 }
 .profile-container h1{
     margin: 10px;
@@ -171,4 +171,20 @@ nav{
 .profile-container p{
     margin: 10px;
     
+}
+.profile-container button{
+    margin: 10px;
+    padding: 10px;
+    width: 5%;
+    border-radius: 30px;
+    background-color: rgba(255,0,0,0.8);
+    font-size: 14px;
+    font-weight: bold;
+    border-color: transparent;
+}
+.profile-container button:hover{
+    background-color: rgba(255,0,0,0.4);
+    border-color: red;
+    cursor: pointer;
+    transition: 0.5s;
 }

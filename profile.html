@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsecuriJobs | Forgot Password</title>
+    <title>InsecuriJobs | Profile</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,17 +24,33 @@
         <h1>Profile</h1>
         <p><strong>Username: </strong> <span id="username"></span></p>
         <p><strong>Email: </strong><span id="email"></span></p>
+        <button id="logout">Logout</button>
     </div>
 
     <script>
-        let user = JSON.parse(localStorage.getItem("user")); // 🚨 Easily manipulated
-        if (user) {
-            document.getElementById("username").innerText = user.name;
-            document.getElementById("email").innerText = user.email;
+        let userName = localStorage.getItem("userName"); 
+        let userEmail = localStorage.getItem("userEmail");
+
+        if (userName && userEmail) {
+            // Remove unwanted quotes or other characters if necessary
+            userName = userName.replace(/['"]+/g, '');  // Remove any extra quotes
+            userEmail = userEmail.replace(/['"]+/g, ''); // Remove any extra quotes
+
+            document.getElementById("username").innerText = userName;
+            document.getElementById("email").innerText = userEmail;
         } else {
             alert("Not logged in");
             window.location.href = "login.html";
         }
+
+        // Logout button event listener
+        document.getElementById("logout").addEventListener('click', function() {
+            // Clear local storage
+            localStorage.clear();
+
+            // Redirect to index.html
+            window.location.href = "index.html";
+        });
     </script>
 </body>
 </html>

@@ -40,7 +40,8 @@
                 body: JSON.stringify({ email, password })
             }).then(res => res.json()).then(data => {
                 if (data.success) {
-                    localStorage.setItem("user", JSON.stringify(data.user));
+                    localStorage.setItem("userName", JSON.stringify(data.userName));
+                    localStorage.setItem("userEmail", JSON.stringify(data.userEmail));
                     window.location.href = "profile.html";  // Redirect to profile
                 } else {
                     alert(data.message);  // Show the error message from backend
